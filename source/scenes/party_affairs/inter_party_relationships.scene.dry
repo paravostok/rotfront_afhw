@@ -10,111 +10,106 @@ max-visits: 12
 
 = Inter-Party Relationships
 
-The SPD cannot govern by itself yet. Because we do not have an electoral majority, we need the support of other parties. Recently, our governments have consisted of the Weimar Coalition of the SPD, Center, and Democratic parties. We can reach out and build additional connections with these parties, or perhaps we can stand alone.
+Whilst our ultimate goal is revolution and deposition of the republic, it would not be wise to ignore the other parties entirely in the time being.
 
-- @liberals: Strengthen our bonds with the left-liberal German Democratic Party and conservative-liberal German People's Party.
-- @center: Strengthen our bonds with the Catholic Center Party.
-- @kpd: Work towards repairing relationships with the Communist Party.
-- @spd_alone: The SPD can stand alone for now.
+- @spd: Work towards repairing relationships with the Social Democratic Party.
+- @center: Try to reach out to the Catholic Center Party.
+- @liberals: Attempt contact with members of the left-liberal German Democratic Party.
+- @kpd_alone: The KPD can stand alone for now.
 - @easy_discard
 
 
-@kpd
+@spd
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; kpd_inter_party_seen += 1
-go-to: kpd_blutmai if blutmai = 1; kpd_1 if blutmai = 0 and kpd_coalition_success = 0 and (kpd_relation < 40 or kpd_rectified_history = 1); kpd_rectification_of_history if kpd_relation >= 40 and kpd_rectified_history = 0; kpd_2 if kpd_coalition_success = 1 and kpd_rectified_history = 1
+on-arrival: resources -= 1; spd_inter_party_seen += 1
+go-to: spd_blutmai if blutmai = 1; spd_1 if blutmai = 0 and spd_coalition_success = 0 and (spd_relation < 40 or spd_rectified_history = 1); spd_rectification_of_history if spd_relation >= 40 and spd_rectified_history = 0; spd_2 if spd_coalition_success = 1 and spd_rectified_history = 1
 
-@kpd_1
-on-arrival: kpd_relation += 6*(1 - dissent); communist_coalition += 1 if kpd_inter_party_seen <= 1; reformist_dissent += 2; z_relation -= 2; dvp_relation -= 3
+@spd_1
+on-arrival: spd_relation += 6*(1 - dissent); communist_coalition += 1 if spd_inter_party_seen <= 1; center_dissent += 2; z_relation -= 2; ddp_relation -= 2
 
-The communists are suspicious of our overtures, especially the Stalinist leadership, who persist in calling us "social fascists". However, connections are made at the grassroots and local levels.
+The Social Democrats remain deeply suspicious of our overtures, pointing to official Comintern rhetoric that labels them "social fascists." Nevertheless, tactical connections and anti-fascist unity begin to build at the grassroots level and on shop floors.
 
-@kpd_rectification_of_history
+@spd_rectification_of_history
 
-One stumbling block for our relations with the KPD is our history of conflict, dating back to 1918 and 1919. The KPD is especially contemptuous of Gustav Noske, the SPD "bloodhound" who reportedly ordered the violent suppression of the Spartacist uprising and other KPD revolts. They also blame us for the deaths of Rosa Luxemburg and Karl Liebknecht, two SPD-turned-KPD leaders who were killed during the suppression of the uprising.
+A major barrier to lasting cooperation with the SPD is our history of bloody conflict dating back to 1918 and 1919. Our rank-and-file has never forgiven Gustav Noske, the SPD minister who ordered the violent suppression of the Spartacist uprising, nor the murders of Rosa Luxemburg and Karl Liebknecht.
 
-For further improvements in KPD relations, it might be necessary to expel Noske, and hold some sort of commemoration for Luxemburg and Liebknecht.
+To move toward genuine United Front actions, our central committee demands that the SPD leadership acknowledge Noske's crimes, disavow past anti-worker violence, and honor Luxemburg and Liebknecht.
 
-- @yes_history: Yes, we must apologize for our past actions.
-- @no_history: No, we have no need to apologize.
+- @yes_history: Demand a formal apology and historical accountability from the SPD.
+- @no_history: Set aside past grievances to prioritize immediate joint action.
 
 @yes_history
-on-arrival: reformist_dissent += 12; reformist_strength -= 2; neorevisionist_dissent += 5; left_dissent -= 6; left_strength += 5; kpd_rectified_history = 1; z_relation -= 6; dvp_relation -= 6; ddp_relation -= 4; kpd_relation += 8*(1-dissent); coalition_dissent += 1
+on-arrival: left_dissent -= 6; left_strength += 5; center_dissent += 5; spd_rectified_history = 1; z_relation -= 5; ddp_relation -= 4; spd_relation += 8*(1-dissent)
 
-As part of normalizing relations with the KPD, we have to acknowledge the wrongdoings of our past. We have expelled Noske, and have held public commemorations for those killed by troops during the uprisings.
-
-This leads to tensions with the moderates and reformists within our party, and criticism from the conservative and liberal parties.
+We insist that the SPD publicly acknowledge the betrayals of 1919. While moderate SPD executives react with anger, left-wing Social Democrats and rank-and-file trade unionists push their leadership to concede, opening a path toward historic reconciliation.
 
 @no_history
-on-arrival: kpd_relation -= 3
+on-arrival: spd_relation -= 3; left_dissent += 4
 
-We have no need to apologize for the actions of Ebert and Noske; it is the Communists' fault for launching a violent insurrection.
+We drop our demands for a formal apology in the name of immediate tactical flexibility. Many in our radical wing accuse the leadership of selling out the martyrs of 1919, while the SPD leadership remains wary.
 
 
-@kpd_2
-on-arrival: kpd_relation += 8*(1 - dissent); communist_coalition += 1 if kpd_inter_party_seen <= 1; reformist_dissent += 2; z_relation -= 3; dvp_relation -= 3
+@spd_2
+on-arrival: spd_relation += 8*(1 - dissent); communist_coalition += 1 if spd_inter_party_seen <= 1; center_dissent += 2; z_relation -= 3
 
-After the success of the coalition government with the KPD, they are much more amenable to us.
+Following successful joint initiatives and cooperation, SPD organizers and rank-and-file workers are far more receptive to working alongside us.
 
-@kpd_blutmai
-on-arrival: kpd_relation += 3*(1 - dissent); reformist_dissent += 1
+@spd_blutmai
+on-arrival: spd_relation += 2*(1 - dissent); left_dissent += 3; center_dissent += 3; reformist_dissent += 3; neorevisionist_dissent += 3; labor_strength -= 3
 
-After the events of Blütmai, reconciling with the Communists is difficult, if not impossible. Nevertheless, we must try.
+After the police massacre of May Day 1929 under Berlin Police Chief Otto Zörgiebel, reconciliation with the Social Democratic leadership is extraordinarily difficult. Fury sweeps through the party: every non-conciliator faction sees their dissent rise significantly, and the Conciliators lose considerable political strength for advocating cooperation with police executioners.
 
 @center
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; z_relation += 2 if z_party_leader == "Joos"
+on-arrival: resources -= 1; z_seen += 1
+go-to: center_refuse if z_seen < 2; center_dialogue if z_seen >= 2
+
+@center_refuse
+on-arrival: left_dissent += 1
+
+The Catholic Center Party flatly refuses to take our meeting, dismissing our delegates as anti-clerical subversives. We will need to make another attempt before they even consider opening dialogue.
+
+@center_dialogue
+on-arrival: z_relation += 2*(1 - dissent)
 go-to: center_op if z_in_government = 1 and spd_in_government = 0 and chancellor != "Brüning"; center_coalition if spd_in_government = 1 and z_in_government = 1; center_bruning if chancellor = "Brüning"
 
 @center_op
-on-arrival: z_relation += 5*(1 - dissent)
+on-arrival: z_relation += 2*(1 - dissent)
 
-We are currently in opposition to the Center-led government, but that does not preclude the general building of feelings of good will.
+Having established basic contact on our second attempt, the Catholic Center Party reluctantly permits limited communication in the Reichstag during opposition maneuvers.
 
 @center_coalition
-on-arrival: z_relation += 8*(1 - dissent)
+on-arrival: z_relation += 2*(1 - dissent)
 
-We are currently coalition partners with them, so improving relations comes naturally.
+While the Center Party sits in government, ongoing dialogue remains extremely guarded and strictly limited to parliamentary mechanics.
 
 @center_bruning
-on-arrival: z_relation += 5*(1 - dissent)
+on-arrival: z_relation += 1*(1 - dissent)
 
-The Brüning semi-autocratic regime makes building friendly relations difficult, but not impossible.
+Under Chancellor Brüning's semi-autocratic emergency decrees, reaching out to the Center Party yields almost no further results.
 
 @liberals
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; ddp_relation += 5*(1 - dissent)
-go-to: dvp_stresemann if stresemann_dead = 0; dvp_loss if stresemann_dead = 1 and year <= 1930; dvp_moribund if year > 1930
+on-arrival: resources -= 1; ddp_seen += 1
+go-to: ddp_refuse if ddp_seen < 3; ddp_dialogue if ddp_seen >= 3
 
-The [+ ddp_name +] has been one of our closest allies through the course of the Republic.
+@ddp_refuse
 
-@dvp_stresemann
-on-arrival: dvp_relation += 8*(1 - dissent)
+The [+ ddp_name +] rejects our outreach outright, viewing us as total enemies of the republic. They refuse to grant an audience to red delegates at this time.
 
-Gustav Stresemann, the leader of the DVP, is one of the best foreign policy leaders of the republic, and while he has previously expressed monarchist tendencies, he has been friendly towards us.
+@ddp_dialogue
+on-arrival: ddp_relation += 2*(1 - dissent)
 
-@dvp_loss
-on-arrival: dvp_relation += 5*(1 - dissent)
+Finally, on our third attempt, key members of the [+ ddp_name +] agree to sit down with our delegates. While fundamentally opposed to proletarian revolution, tentative dialogue regarding constitutional rights and anti-fascist defense can now proceed at a very slow pace.
 
-With the death of Gustav Stresemann, the DVP is much less likely to be accommodating of us. In addition, the liberal parties are electorally in decline, so perhaps our efforts are best spent elsewhere.
+@kpd_alone
 
-However, given the influence of the DVP among the other right-leaning parties [? if president == "Hindenburg": and with President Hindenburg ?], it can still be helpful to influence them.
-
-@dvp_moribund
-on-arrival: dvp_relation += 5*(1 - dissent)
-
-The liberal parties (both the [+ ddp_name +] and DVP) are electorally moribund, so perhaps our efforts are best spent elsewhere.
-
-However, given the influence of the DVP among the other right-leaning parties[? if president == "Hindenburg": and with President Hindenburg ?], it can still be helpful to influence them.
-
-@spd_alone
-
-Whether it is because we *cannot* or *will not*, we do not make ties with other parties at this moment.
+Whether due to revolutionary purity or tactical necessity, we make no overtures to bourgeois or reformist parties at this time, relying solely on our own vanguard organization.
 
 - @return: Continue...
