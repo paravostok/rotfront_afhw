@@ -19,8 +19,8 @@ However, the SPD-controlled Prussian Interior Ministry and Police President Otto
 
 
 @defy_ban
-// Triggers Blutmai if SPD relations are low to moderate (< 50)
 go-to: blutmai_erupts if spd_relation < 50; peaceful_perm if spd_relation >= 50
+// Triggers Blutmai if SPD relations are low to moderate (< 50)
 
 @blutmai_erupts
 on-arrival: blutmai = 1; spd_relation -= 20; z_relation -= 5; dvp_relation -= 5; workers_kpd += 4; unemployed_kpd += 4; strife += 1; rfb_banned = 1; rfb_strength -= 50; left_dissent += 3; center_dissent += 3; reformist_dissent += 3; neorevisionist_dissent += 3; labor_strength -= 3
