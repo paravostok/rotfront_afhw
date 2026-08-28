@@ -19,7 +19,9 @@ However, the SPD-controlled Prussian Interior Ministry and Police President Otto
 
 
 @defy_ban
+# Triggers Blutmai if SPD relations are low to moderate (< 50)
 go-to: blutmai_erupts if spd_relation < 50; peaceful_perm if spd_relation >= 50
+
 
 @blutmai_erupts
 on-arrival: blutmai = 1; spd_relation -= 20; z_relation -= 5; dvp_relation -= 5; workers_kpd += 4; unemployed_kpd += 4; strife += 1; rfb_banned = 1; rfb_strength -= 50; left_dissent += 3; center_dissent += 3; reformist_dissent += 3; neorevisionist_dissent += 3; labor_strength -= 3
@@ -34,10 +36,12 @@ Our party press decries the incident as *Blutmai*—Bloody May. Fury sweeps thro
 - @blame_zorgiebel: Direct all outrage toward Zörgiebel and the SPD leadership as "social-fascist bloodhounds."
 - @appeal_rank_and_file: Focus our rhetoric on winning over horrified SPD rank-and-file workers against their leaders.
 
+
 @blame_zorgiebel
 on-arrival: spd_relation -= 10; center_strength += 5; center_dissent -= 5; comintern_approval += 5
 
 We double down on the Comintern line: Zörgiebel's bullets prove that Social Democracy is merely the left wing of fascism. The Zentralkomitee hardens its stance against any reconciliation.
+
 
 @appeal_rank_and_file
 on-arrival: spd_relation += 5; labor_strength += 3; center_dissent += 3; comintern_approval -= 5
@@ -52,7 +56,6 @@ Because our relations with the Social Democratic government have improved, the p
 
 
 @peaceful_march
-view-if: spd_relation >= 30
 on-arrival: spd_relation += 5; workers_kpd += 3; unemployed_kpd += 3; rfb_militancy -= 0.05
 
 We instruct our local cells and the RFB to avoid provocative confrontations and maintain strict discipline. The marches proceed through working-class quarters without major bloodshed. While the SPD police remain tense, disaster is averted, and onlookers respect our restraint.
@@ -62,7 +65,6 @@ We instruct our local cells and the RFB to avoid provocative confrontations and 
 choose-if: spd_relation >= 45
 unavailable-subtitle: The SPD and their trade unions do not trust us enough to march together (Requires SPD Relation >= 45).
 on-arrival: spd_relation += 15; workers_kpd += 5; unemployed_kpd += 5; workers_spd += 3; communist_coalition += 2; rfb_strength += 50; rfb_militancy += 0.05; z_relation -= 8; dvp_relation -= 8
-achievement: die_rote_fahne
 
 Leveraging our high standing with Social Democratic workers and left-wing SPD executives, we successfully organize a joint May Day rally. 
 
