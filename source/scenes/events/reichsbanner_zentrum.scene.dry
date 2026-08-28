@@ -1,34 +1,32 @@
-title: Exodus from the Reichsbanner
-subtitle: Owing to its militarization, the Center Party and [+ ddp_name +] are leaving the Reichsbanner.
-view-if: rb_militancy >= 0.2 and not rb_exit and not rb_stay
+title: Backlash Against the RFB
+subtitle: The Rotfrontkämpferbund's growing militancy is alarming would-be allies within the SPD and trade unions.
+view-if: rfb_militancy >= 0.2 and not rfb_backlash_resolved
 new-page: true
 tags: event
 
-= Exodus from the Reichsbanner
+= Backlash Against the RFB
 
-The Reichsbanner has become increasingly militarized as of late, with ever-greater quantities of arms and paramilitary training, as well as a stream of radicalized SPD members. In response, the members associated with the other Weimar parties, the Center Party and [+ ddp_name +], are threatening to leave for good. They signed up for a mass movement to defend the republic, not a socialist militia.
+The Rotfrontkämpferbund has grown ever more militant, its ranks swelling with arms, drilling, and a growing willingness to meet the SA and Stahlhelm blow for blow in the streets. Sympathetic Social Democratic workers and trade unionists, who had been drawn toward United Front actions, are increasingly alarmed. To them, the RFB no longer looks like proletarian self-defense, but like an army ready for a Bolshevik uprising. 
 
-- @let_go: Let the centrists and liberals go.
-- @lower_militancy: We must lower the Reichsbanner's militancy.
-- @keep_them: Can we convince them that a militant Reichsbanner is necessary for defending the Republic?
+- @press_on: Let the RFB's militancy continue unchecked.
+- @lower_militancy: Rein in the RFB to preserve our openings with Social Democratic workers.
+- @justify_militancy: Argue that only a militant RFB can defend the working class from fascism.
 
-@let_go
-on-arrival: rb_strength *= 0.9; z_relation -= 5; ddp_relation -= 5; rb_exit = 1; left_strength += 5*(1-dissent)
+@press_on
+on-arrival: rfb_strength *= 0.95; spd_relation -= 5; labor_dissent += 5; rfb_backlash_resolved = 1; center_strength += 5*(1-dissent)
 
-We have judged that the Reichsbanner's militancy is more important than maintaining a coalition with the Center Party and [+ ddp_name +]. The Reichsbanner members affiliated with these parties leave, while the left of the SPD is strengthened.
+We judge that revolutionary readiness matters more than preserving ties to reformist trade unionists. Moderate sympathizers within the SPD's ranks recoil from the RFB's hardening posture, and some of our own Conciliators grumble at the lost opportunity for unity. The hardliners of the Zentralkomitee are strengthened all the same.
 
-# TODO: this should make it harder to form Weimar coalitions
-
+# TODO: this should make joint SPD actions (May Day, Iron Front counters) harder to trigger
 
 @lower_militancy
-on-arrival: rb_militancy *= 0.5
+on-arrival: rfb_militancy *= 0.5; rfb_backlash_resolved = 1
 
-Bowing to the other parties' demands, we reduce the Reichsbanner's military training, thus inducing them to stay.
+Bowing to pressure from trade unionists and Social Democratic sympathizers, we order the RFB to stand down its drilling and rhetoric, preserving the fragile threads of a United Front.
 
+@justify_militancy
+unavailable-subtitle: The moment is not yet ripe to make this argument.
+choose-if: strife >= 5 and spd_relation >= 50
+on-arrival: rfb_backlash_resolved = 1; spd_relation += 3
 
-@keep_them
-unavailable-subtitle: They are unable to be convinced at this time.
-choose-if: strife >= 5 and (z_relation >= 50 or (z_party_leader == "Joos" and z_relation >= 30)) and ddp_relation >= 50
-on-arrival: rb_stay = 1
-
-Seeing the strife that has filled Germany's streets, the Center Party and [+ ddp_name +] seem to be convinced that it is necessary for the Reichsbanner to be militarized, and will not leave the organization.
+Pointing to the escalating street violence perpetrated by the SA and Stahlhelm, our agitators make the case that a militant RFB is the only guarantee against fascist terror. Enough Social Democratic workers are convinced to look past their unease, at least for now.
