@@ -21,7 +21,7 @@ The KPD is torn between many different ideological currents. What should be our 
 - @easy_discard
 
 @class_struggle
-//trotskyists
+#trotskyists
 on-arrival: {!
 if (Q.ideology && Q.ideology != "left") {
     Q.changed = 1;
@@ -33,7 +33,7 @@ on-departure: ideology = "left"; left_strength += 10; communist_coalition += 1; 
 The Trotskyists within the party represent the left opposition, guided by the theory of permanent revolution and workers democracy.
 
 @centrist
-//stalinists
+#stalinists
 on-arrival: {!
 if (Q.ideology && Q.ideology != "centrist") {
     Q.changed = 1;
@@ -45,7 +45,7 @@ on-departure: ideology = "centrist"; center_strength += 10; center_dissent -= 10
 The Stalinists, principally represented by Ernst Thälmann, uphold loyalty to Moscow first and foremost, believing the SPD to be "Social Fascists".
 
 @labor
-//concillators
+#concillators
 on-arrival: {!
 if (Q.ideology && Q.ideology != "labor") {
     Q.changed = 1;
@@ -57,7 +57,7 @@ on-departure: ideology = "labor"; labor_strength += 10; wtb_support += 1; labor_
 The conciliatory wing of the party is against sectarian left-wing infighting, represented by veterans such as Ernst Meyer and Arthur Ewert. Advocating for a United front with the SPD both in the streets and Reichstag.
 
 @reform
-//labour
+#labour
 on-arrival: {!
 if (Q.ideology && Q.ideology != "reformist") {
     Q.changed = 1;
